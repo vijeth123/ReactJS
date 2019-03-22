@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hi</title>
+
+    <script src="../lib/react.min.js"></script>
+    <script src="../lib/react-dom.min.js"></script>
+    <script src="../lib/browser.min.js"></script>
+</head>
+<body>
+
+    <div id="txt"></div>
+
+    <script type="text/babel">
+        var Bacon = React.createClass({
+            render : function(){
+                        return (<h2>This is a simple component</h2>);
+                     }
+        });
+
+        ReactDOM.render(<Bacon/>, document.getElementById('txt'));
+    </script>
+
+</body>
+</html>

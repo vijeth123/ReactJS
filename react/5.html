@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello</title>
+    <script src="../lib/react.min.js"></script>
+    <script src="../lib/react-dom.min.js"></script>
+    <script src="../lib/browser.min.js"></script>
+</head>
+
+<body>
+
+    <div id="txt"></div>
+
+    <script type="text/babel">
+
+        var Comment = React.createClass({
+                            edit: function(){
+                                alert('You clicked on edit');
+                            },
+                            remove: function(){
+                                alert('You clicked on remove');
+                            },
+                            render: function(){
+                                return(<div>
+                                        <h5>{this.props.children}</h5>
+                                        <button onClick={this.edit}>Edit</button>
+                                        <button onClick={this.remove}>Remove</button>
+                                    </div>);
+                            }
+                      });
+
+        ReactDOM.render(<div>
+                        <Comment>This is a sample comment</Comment>
+                        <Comment>Hi, Good morning!</Comment>
+                        <Comment>Hi, Good evening!</Comment>
+                        </div>, document.getElementById('txt'));
+
+    </script>
+
+
+</body>
+</html>

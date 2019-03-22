@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Change State of components</title>
+    <script src="../lib/react.min.js"></script>
+    <script src="../lib/react-dom.min.js"></script>
+    <script src="../lib/browser.min.js"></script>
+</head>
+<body>
+    <div id="comp"></div>
+
+    <script type="text/babel">
+
+        var Comment = React.createClass({
+                            getInitialState: function(){
+                                return {editing : false};
+                            },
+                            edit: function(){
+                                alert('Clicked on edit');
+                                this.setState({editing: true});
+                            },
+                            save: function(){
+                                alert('Clicked on save');
+                                this.setState({editing: false});
+                            },
+                            renderEditButton: function(){
+                                return (<div>
+                                            <h2>{this.props.children}</h2>
+                                            <button onClick={this.edit}>Edit</button>
+                                        </div>);
+                            },
+                            renderSaveButton: function(){
+                                return (<div>
+                                            <textarea defaultValue={this.props.children}></textarea><br/>
+                                            <button onClick={this.save}>Save</button>
+                                        </div>);
+                            },
+                            render: function(){
+                                if(this.state.editing){
+                                    return this.renderSaveButton();
+                                }else{
+                                    return this.renderEditButton();
+                                }
+                            }
+                      });
+
+        ReactDOM.render(<Comment>This is Vijeth's comment</Comment>, document.getElementById('comp'));
+
+    </script>
+
+</body>
+</html>
