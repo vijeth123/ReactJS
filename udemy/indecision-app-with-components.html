@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Indecision App</title>
+</head>
+<body>
+
+<div id='abc'></div>
+<script src='../lib/react.min.js'></script>
+<script src='../lib/react-dom.min.js'></script>
+<script src='../lib/browser.min.js'></script>
+
+<script type='text/babel'>
+
+        class IndecisionApp extends React.Component {
+
+            render() {
+                const options = ['Thing One', 'Thing Two', 'Thing Four'];
+
+                return (
+                    <div>
+                        <Header title = {this.props.title} subtitle = {this.props.subtitle}/>
+                        <Action/>
+                        <Options options={options}/>
+                        <AddOption/>
+                    </div>
+                );
+            }
+        }
+
+        class Header extends React.Component {
+            render() {
+                return (
+                    <div>
+                        <h2>{this.props.title}</h2>
+                        <p>{this.props.subtitle}</p>
+                    </div>
+                );
+            }
+        }
+
+        class Action extends React.Component {
+            render() {
+                return (
+                    <div>
+                        <button>What should I do?</button>
+                    </div>
+                );
+            }
+        }
+
+        class Options extends React.Component {
+            render() {
+                return (
+                    <div>
+                        <ol>
+                            {this.props.options.map(o => <Option item = {o}/>)}
+                        </ol>
+                    </div>
+                );
+            }
+        }
+
+        class Option extends React.Component {
+            render() {
+                return (
+                    <li key = {this.props.item}>{this.props.item}</li>
+                );
+            }
+        }
+
+        class AddOption extends React.Component {
+            render() {
+                return (
+                    <div>
+                        <form>
+                            <input type = 'text' name = 'option'/>
+                            <button>Add Option</button>
+                        </form>
+                    </div>
+                );
+            }
+        }
+
+        const title = 'Indecision App';
+        const subtitle = 'Life in the hands of a computer.'
+        ReactDOM.render(<IndecisionApp title = {title} subtitle = {subtitle}/>, document.getElementById('abc'));
+
+</script>
+
+</body>
+</html>

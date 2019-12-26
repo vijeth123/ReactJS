@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Visibility Toggle</title>
+</head>
+<body>
+
+<div id='abc'></div>
+
+<script src="../lib/react.min.js"></script>
+<script src="../lib/react-dom.min.js"></script>
+<script src="../lib/browser.min.js"></script>
+
+<script type='text/babel'>
+
+        let toggleFlag = false;
+
+        function toggle() {
+            toggleFlag = !toggleFlag;
+            renderApp();
+        }
+
+        function renderApp() {
+            const template = (
+                <div>
+                    <h2>Visibility Toggle</h2>
+                    <button onClick = {toggle}>{toggleFlag ? 'Hide Details' : 'Show Details'} </button>
+                    {toggleFlag && <p>This is an important info :)</p>}
+                </div>
+            );
+            ReactDOM.render(template, document.getElementById('abc'));
+        }
+        renderApp();
+
+</script>
+
+</body>
+</html>

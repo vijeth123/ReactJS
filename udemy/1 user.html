@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User</title>
+</head>
+<body>
+
+<div id='abc'></div>
+<script src="../lib/react.min.js"></script>
+<script src="../lib/react-dom.min.js"></script>
+<script src="../lib/browser.min.js"></script>
+
+<script type='text/babel'>
+
+        const user = {
+            name: 'Vijeth',
+            age: 26,
+            location: 'Shimoga'
+        }
+
+        const template = (
+            <div>
+                <h2>{user.name}</h2>
+                {(user.age && user.age >= 18) ? <p>Your age is: {user.age}</p> : <p>You are a minor</p>}
+                {user.location && <p>{user.location}</p>}
+            </div>
+        )
+        ReactDOM.render(template, document.getElementById('abc'));
+
+</script>
+
+</body>
+</html>

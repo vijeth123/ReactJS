@@ -10,17 +10,19 @@
 </head>
 <body>
 
-    <div id="txt"></div>
+<div id="txt"></div>
 
-    <script type="text/babel">
-        var Bacon = React.createClass({
-            render : function(){
-                        return (<h2>This is a simple component</h2>);
-                     }
-        });
+<script type="text/babel">
+
+        class Bacon extends React.Component {
+            render() {
+                return (<h2>This is a simple component!</h2>);
+            }
+        }
 
         ReactDOM.render(<Bacon/>, document.getElementById('txt'));
-    </script>
+
+</script>
 
 </body>
 </html>

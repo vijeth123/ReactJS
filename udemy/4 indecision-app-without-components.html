@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8"/>
+<title>Indecision App</title>
+<body>
+
+<div id="abc"></div>
+
+<script src="../lib/react.min.js"></script>
+<script src="../lib/react-dom.min.js"></script>
+<script src="../lib/browser.min.js"></script>
+
+<script type="text/babel">
+
+            const app = {
+                title: 'Indecision App',
+                subtitle: 'Life in the hands of a computer',
+                options: ['One', 'Two']
+            };
+
+            function onSubmit(e) {
+                e.preventDefault();
+                const option = e.target.option.value;
+
+                if(option && option.length > 0) {
+                    app.options.push(option);
+                    e.target.option.value = '';
+                    renderApp();
+                }
+            }
+
+            function removeAllOptions() {
+                app.options = [];
+                renderApp();
+            }
+
+            function pickOption() {
+                const index = Math.floor(Math.random() * app.options.length);
+                alert('Your option is: ' + app.options[index]);
+            }
+
+            function renderApp() {
+                const template = (
+                    <div>
+                        <h2>{app.title}</h2>
+                        {app.subtitle && <p>{app.subtitle}</p>}
+                        {(app.options && app.options.length > 0) ? <p>Here are your options:</p> : <p>No options</p> }
+
+                        <button onClick={pickOption} disabled={app.options.length === 0}>Pick your option</button>
+                        <button onClick={removeAllOptions}>Remove All</button>
+
+                        <ol>
+                            {app.options.map(o => <li key={o}>{o}</li>)}
+                        </ol>
+
+                        <form onSubmit={onSubmit}>
+                            <input type = 'text' name = 'option'/>
+                            <button>Add Option</button>
+                        </form>
+
+                    </div>
+                );
+                ReactDOM.render(template, document.getElementById('abc'));
+            }
+            renderApp();
+
+</script>
+
+</body>
+</html>
