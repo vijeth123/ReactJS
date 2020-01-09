@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Counter using State</title>
+    </head>
+
+    <body>
+        <div id = 'abc'></div>
+
+        <script src = '../lib/react.min.js'></script>
+        <script src = '../lib/react-dom.min.js'></script>
+        <script src = '../lib/browser.min.js'></script>
+
+        <script type = 'text/babel'>
+
+            class Counter extends React.Component {
+
+                constructor(props){
+                    super(props);
+                    this.handleCount = this.handleCount.bind(this);
+                    this.state = {count: 0};
+                }
+
+                handleCount() {
+                    this.setState(
+                        (previousState) => {return {count: previousState.count + 1}}
+                    );
+                }
+
+                render() {
+                    return (
+                        <div>
+                            <h2>Counter using State</h2>
+                            <p>Count: {this.state.count}</p>
+                            <button onClick={this.handleCount}>+1</button>
+                        </div>
+                    );
+                }
+            }
+            ReactDOM.render(<Counter/>, document.getElementById('abc'));
+
+        </script>
+
+    </body>
+
+</html>

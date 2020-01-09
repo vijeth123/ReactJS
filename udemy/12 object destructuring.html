@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Object Destructuring</title>
+</head>
+<body>
+
+
+    <script>
+
+        const user = {
+            name: 'Vijeth',
+            age: 26,
+            location: {
+                         district: 'Shimoga',
+                         state: 'Karnataka'
+                      }
+        }
+
+        const {name: firstName = 'Anonymous', age} = user;
+        console.log('Your first name is: ' + firstName);
+        console.log('Your age is: ' + age);
+
+        const {district, state} = user.location;
+        console.log(`You were born in ${district}, ${state}`);
+
+
+
+        const book = {
+            title: 'Ego is the Enemy',
+            author: 'Ryan Holiday',
+            publisher: {
+                name: 'Penguin'
+            }
+        }
+
+        const {name: publisherName = 'Self-Published'} = book.publisher;
+        console.log(publisherName);
+
+    </script>
+
+</body>
+</html>

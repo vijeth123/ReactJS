@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Higher Order Components</title>
+</head>
+<body>
+
+    <div id = 'abc'></div>
+
+    <script src = '../lib/react.min.js'></script>
+    <script src = '../lib/react-dom.min.js'></script>
+    <script src = '../lib/browser.min.js'></script>
+
+    <script type = 'text/babel'>
+
+        const Info = (props) => (
+            <div>
+                <h2>Info</h2>
+                <p>This is some information: {props.info}</p>
+            </div>
+        );
+
+        const withAdminWarning = (WrappedComponent) => {
+            return (props) => (
+                <div>
+                    {props.isAdmin && <h4>Please keep this info confidential</h4>}
+                    <WrappedComponent {...props}/>
+                </div>
+            );
+        }
+
+        const requireAuthentication = (WrappedComponent) => {
+            return (props) => (
+                <div>
+                    {props.isAuthenticated ? <WrappedComponent {...props}/> : <h3>Please login to see the info</h3> }
+                </div>
+            );
+        };
+
+        const AdminInfo = withAdminWarning(Info);
+        const AuthInfo = requireAuthentication(Info);
+
+        // ReactDOM.render(<AdminInfo isAdmin = {true} info = 'Good morning'/>, document.getElementById('abc'));
+
+        ReactDOM.render(<AuthInfo isAuthenticated = {false} info = 'Hi Vijeth'/>, document.getElementById('abc'));
+
+    </script>
+
+</body>
+</html>
